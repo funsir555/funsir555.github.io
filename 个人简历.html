@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>财务数字化专家 | 您的姓名</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #95a5a6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 8px 8px 0 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        section {
+            background-color: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        h2 i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .card {
+            background-color: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card h3 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .card .highlight {
+            font-weight: bold;
+            color: var(--accent);
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .skill-badge {
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .script-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .script-card {
+            background-color: white;
+            border: 1px solid #eee;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .script-card:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.1);
+        }
+        
+        .script-card a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
+        }
+        
+        .script-card .icon {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .card-grid, .script-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>您的姓名</h1>
+            <p>财务数字化专家 | 自动化解决方案架构师</p>
+        </header>
+        
+        <section>
+            <h2><i class="fas fa-user-tie"></i>个人简介</h2>
+            <p>资深财务专业人士，专注于财务数字化转型，擅长利用SQL、VBA、RPA和Python等技术构建自动化财务系统，提升工作效率并降低成本。具备丰富的财务系统建设和流程优化经验。</p>
+        </section>
+        
+        <section>
+            <h2><i class="fas fa-project-diagram"></i>项目经验</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>无纸化财务体系</h3>
+                    <p>主导搭建了部门的<span class="highlight">无纸化报销流程</span>与<span class="highlight">无纸化档案室</span>，实现财务档案全电子化管理，提升了工作效率并减少了物理存储成本。</p>
+                </div>
+                
+                <div class="card">
+                    <h3>税务预算体系</h3>
+                    <p>搭建了集团的<span class="highlight">税务预算体系</span>，可以提前透视公司未来税务利润，根据需求配置成本，大幅度降低了集团的<span class="highlight">税负率</span>。</p>
+                </div>
+                
+                <div class="card">
+                    <h3>费用预算体系</h3>
+                    <p>通过深入业务一线调研，建立集团费用预算体系，应用重要性分析原则，剔除与更换非必要费用成本，最终<span class="highlight">节省30%费用成本</span>。</p>
+                </div>
+                
+                <div class="card">
+                    <h3>报表一体化分析体系</h3>
+                    <p>通过SQL整合分析58家账套数据，对增值税所得税差异、往来账龄分析等实现批量化预警，<span class="highlight">提升账务准确性</span>与<span class="highlight">工作效率50%</span>。</p>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2><i class="fas fa-code"></i>技术技能</h2>
+            <div class="skills-container">
+                <span class="skill-badge"><i class="fas fa-file-invoice-dollar" style="margin-right: 5px;"></i> 初级会计职称</span>
+                <span class="skill-badge"><i class="fas fa-database" style="margin-right: 5px;"></i> SQL</span>
+                <span class="skill-badge"><i class="fas fa-file-excel" style="margin-right: 5px;"></i> VBA</span>
+                <span class="skill-badge"><i class="fas fa-robot" style="margin-right: 5px;"></i> RPA</span>
+                <span class="skill-badge"><i class="fab fa-python" style="margin-right: 5px;"></i> Python</span>
+            </div>
+        </section>
+        
+        <section>
+            <h2><i class="fas fa-tools"></i>开发的工具/脚本</h2>
+            <div class="script-grid">
+                <div class="script-card">
+                    <div class="icon"><i class="fas fa-money-check-alt"></i></div>
+                    <a href="#">银行余额一键核对</a>
+                </div>
+                
+                <div class="script-card">
+                    <div class="icon"><i class="fas fa-chart-line"></i></div>
+                    <a href="#">集团账龄分析体系</a>
+                </div>
+                
+                <div class="script-card">
+                    <div class="icon"><i class="fas fa-exchange-alt"></i></div>
+                    <a href="#">内部往来自动对账体系</a>
+                </div>
+                
+                <div class="script-card">
+                    <div class="icon"><i class="fas fa-balance-scale"></i></div>
+                    <a href="#">增值税所得税差异分析体系</a>
+                </div>
+                
+                <div class="script-card">
+                    <div class="icon"><i class="fas fa-file-invoice"></i></div>
+                    <a href="#">银行流水一键生成凭证</a>
+                </div>
+                
+                <div class="script-card">
+                    <div class="icon"><i class="fas fa-table"></i></div>
+                    <a href="#">集团报表合并工具</a>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2><i class="fas fa-graduation-cap"></i>教育背景</h2>
+            <p>（这里替换为您的教育经历信息）</p>
+        </section>
+        
+        <section>
+            <h2><i class="fas fa-briefcase"></i>工作经历</h2>
+            <p>（这里替换为您的工作经历信息）</p>
+        </section>
+        
+        <footer>
+            © 2026 封凯继 | 财务数字化专家
+        </footer>
+    </div>
+</body>
+</html>

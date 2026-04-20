@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent智能财务系统 | 项目详情</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #17324d;
+            --secondary: #1f7bb6;
+            --accent: #ef6c3d;
+            --surface: #ffffff;
+            --border: #d8e4ef;
+            --text: #213547;
+            --muted: #5f7285;
+            --success: #1f9d78;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background:
+                radial-gradient(circle at top right, rgba(31, 123, 182, 0.14), transparent 24%),
+                linear-gradient(180deg, #eef5fb 0%, #f7f9fc 45%, #eef3f8 100%);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .page-shell {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 32px 20px 60px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(23, 50, 77, 0.96), rgba(31, 123, 182, 0.92));
+            color: #fff;
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 22px 40px rgba(17, 45, 78, 0.16);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: auto -60px -90px auto;
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            margin-bottom: 20px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            margin: 0 0 14px;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            line-height: 1.15;
+        }
+
+        .hero p {
+            margin: 0;
+            max-width: 760px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.05rem;
+        }
+
+        .hero-meta {
+            margin-top: 22px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .hero-meta span {
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
+
+        .grid {
+            display: grid;
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        .grid.two {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .panel {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 26px;
+            box-shadow: 0 12px 30px rgba(19, 47, 76, 0.06);
+        }
+
+        .panel h2 {
+            margin: 0 0 14px;
+            font-size: 1.45rem;
+            color: var(--primary);
+        }
+
+        .panel p,
+        .panel li {
+            color: var(--muted);
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .metric {
+            padding: 18px;
+            border-radius: 18px;
+            background: linear-gradient(180deg, #f8fbfe 0%, #eef5fb 100%);
+            border: 1px solid #dbe8f3;
+        }
+
+        .metric strong {
+            display: block;
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 4px;
+        }
+
+        .list {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 20px;
+            background: linear-gradient(180deg, #ffffff 0%, #f8fbfd 100%);
+        }
+
+        .feature-card h3 {
+            margin: 0 0 8px;
+            color: var(--primary);
+            font-size: 1.06rem;
+        }
+
+        .feature-card i {
+            color: var(--secondary);
+            margin-right: 8px;
+        }
+
+        .gallery-panel {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-panel::before {
+            content: '';
+            position: absolute;
+            inset: -120px auto auto -100px;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(31, 123, 182, 0.12) 0%, rgba(31, 123, 182, 0) 70%);
+            pointer-events: none;
+        }
+
+        .gallery-intro {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 18px;
+            margin-bottom: 24px;
+        }
+
+        .gallery-intro p {
+            margin: 8px 0 0;
+            max-width: 620px;
+        }
+
+        .gallery-count {
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, rgba(23, 50, 77, 0.96), rgba(31, 123, 182, 0.92));
+            color: #fff;
+            box-shadow: 0 12px 24px rgba(17, 45, 78, 0.14);
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
+
+        .gallery-count i {
+            color: #9fd9ff;
+        }
+
+        .snapshot-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .snapshot-card {
+            grid-column: span 4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+            border: 1px solid rgba(17, 45, 78, 0.08);
+            border-radius: 24px;
+            overflow: hidden;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(245, 249, 252, 0.96));
+            box-shadow: 0 18px 34px rgba(19, 47, 76, 0.08);
+            transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+        }
+
+        .snapshot-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 44px rgba(19, 47, 76, 0.12);
+            border-color: rgba(31, 123, 182, 0.24);
+        }
+
+        .snapshot-card:nth-child(1) {
+            grid-column: span 7;
+        }
+
+        .snapshot-card:nth-child(2) {
+            grid-column: span 5;
+        }
+
+        .snapshot-trigger {
+            position: relative;
+            border: 0;
+            padding: 0;
+            width: 100%;
+            cursor: zoom-in;
+            background: linear-gradient(135deg, #dbe6ef 0%, #eff5fb 100%);
+            overflow: hidden;
+        }
+
+        .snapshot-card:nth-child(1) .snapshot-trigger {
+            aspect-ratio: 16 / 9.6;
+        }
+
+        .snapshot-card:not(:nth-child(1)) .snapshot-trigger {
+            aspect-ratio: 16 / 10.8;
+        }
+
+        .snapshot-media {
+            position: relative;
+            height: 100%;
+            min-height: 100%;
+        }
+
+        .snapshot-media img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.45s ease;
+        }
+
+        .snapshot-card:hover .snapshot-media img {
+            transform: scale(1.04);
+        }
+
+        .snapshot-sheen {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(180deg, rgba(7, 18, 31, 0.04) 0%, rgba(7, 18, 31, 0.38) 68%, rgba(7, 18, 31, 0.75) 100%),
+                linear-gradient(120deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 28%);
+            pointer-events: none;
+        }
+
+        .snapshot-topline,
+        .snapshot-bottomline {
+            position: absolute;
+            left: 18px;
+            right: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            z-index: 1;
+            color: #fff;
+        }
+
+        .snapshot-topline {
+            top: 18px;
+        }
+
+        .snapshot-bottomline {
+            bottom: 18px;
+            align-items: flex-end;
+        }
+
+        .snapshot-badge,
+        .snapshot-zoom {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            backdrop-filter: blur(10px);
+            background: rgba(9, 26, 42, 0.48);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .snapshot-zoom {
+            opacity: 0;
+            transform: translateY(6px);
+            transition: opacity 0.28s ease, transform 0.28s ease;
+        }
+
+        .snapshot-card:hover .snapshot-zoom,
+        .snapshot-trigger:focus-visible .snapshot-zoom {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .snapshot-index {
+            font-size: 0.78rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.74);
+        }
+
+        .snapshot-label {
+            margin-top: 6px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            line-height: 1.3;
+            text-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+        }
+
+        .snapshot-fallback {
+            position: absolute;
+            inset: 0;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 24px;
+            text-align: center;
+            color: var(--muted);
+            background:
+                linear-gradient(135deg, rgba(31, 123, 182, 0.09), rgba(239, 108, 61, 0.08)),
+                repeating-linear-gradient(
+                    45deg,
+                    rgba(255, 255, 255, 0.5),
+                    rgba(255, 255, 255, 0.5) 14px,
+                    rgba(231, 239, 247, 0.85) 14px,
+                    rgba(231, 239, 247, 0.85) 28px
+                );
+        }
+
+        .snapshot-fallback i {
+            font-size: 2rem;
+            color: var(--secondary);
+        }
+
+        .snapshot-body {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 18px 20px 20px;
+        }
+
+        .snapshot-body h3 {
+            margin: 0;
+            color: var(--primary);
+            font-size: 1.04rem;
+        }
+
+        .snapshot-route {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: #eef5fb;
+            color: var(--secondary);
+            font-size: 0.82rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .snapshot-route i {
+            color: var(--success);
+        }
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 28px;
+        }
+
+        .lightbox[hidden] {
+            display: none;
+        }
+
+        .lightbox-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(5, 16, 27, 0.82);
+            backdrop-filter: blur(8px);
+        }
+
+        .lightbox-dialog {
+            position: relative;
+            z-index: 1;
+            width: min(1180px, 100%);
+            max-height: calc(100vh - 56px);
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 16px;
+        }
+
+        .lightbox-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            color: #fff;
+        }
+
+        .lightbox-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .lightbox-meta strong {
+            font-size: 1.1rem;
+        }
+
+        .lightbox-meta span {
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 0.92rem;
+        }
+
+        .lightbox-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lightbox-btn {
+            border: 0;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            cursor: pointer;
+            transition: transform 0.22s ease, background 0.22s ease;
+        }
+
+        .lightbox-btn:hover,
+        .lightbox-btn:focus-visible {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .lightbox-stage {
+            position: relative;
+            background: rgba(10, 21, 33, 0.74);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 28px;
+            padding: 18px;
+            box-shadow: 0 32px 50px rgba(0, 0, 0, 0.32);
+            overflow: hidden;
+        }
+
+        .lightbox-stage img {
+            width: 100%;
+            max-height: calc(100vh - 170px);
+            object-fit: contain;
+            display: block;
+            border-radius: 18px;
+            background: #091a2a;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .lightbox-nav--prev {
+            left: 24px;
+        }
+
+        .lightbox-nav--next {
+            right: 24px;
+        }
+        @media (max-width: 860px) {
+            .grid.two,
+            .feature-grid,
+            .metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-intro {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .snapshot-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .snapshot-card,
+            .snapshot-card:nth-child(1),
+            .snapshot-card:nth-child(2) {
+                grid-column: span 1;
+            }
+
+            .snapshot-body {
+                flex-direction: column;
+            }
+
+            .snapshot-route {
+                white-space: normal;
+            }
+
+            .lightbox {
+                padding: 18px;
+            }
+
+            .lightbox-toolbar {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .lightbox-actions {
+                width: 100%;
+                justify-content: flex-end;
+            }
+
+            .lightbox-nav {
+                display: none;
+            }
+
+            .hero,
+            .panel {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-shell">
+        <section class="hero">
+            <a class="back-link" href="Resume.html"><i class="fas fa-arrow-left"></i>返回简历主页</a>
+            <h1>Agent智能财务系统</h1>
+            <p>
+                这是我基于 Codex 独立推进的智能财务系统项目，围绕“费控、报销、付款、凭证、电子档案、Agent 自动化”构建统一的财务协同平台，目标是把原本分散在 Excel、邮件、ERP 和线下流转中的动作连接成一条可追踪、可配置、可持续迭代的数字化链路。
+            </p>
+            <div class="hero-meta">
+                <span>Vue 3 + Router + Pinia</span>
+                <span>Element Plus</span>
+                <span>Spring Boot + Maven</span>
+                <span>MySQL</span>
+                <span>权限路由 / 工作台 / Agent 编排</span>
+            </div>
+        </section>
+
+        <div class="grid two">
+            <section class="panel">
+                <h2>项目定位</h2>
+                <p>
+                    项目以“报销系统”为核心入口，向前连接业务申请与审批流程，向后衔接付款、凭证生成、总账查询和财务档案管理，并进一步引入 Agent 工作台，把 Prompt、模型、工具和触发器纳入统一界面，形成面向财务场景的智能协同平台。
+                </p>
+                <div class="metrics">
+                    <div class="metric">
+                        <strong>6+</strong>
+                        <span>关键业务域联动：报销、流程、付款、凭证、档案、Agent</span>
+                    </div>
+                    <div class="metric">
+                        <strong>303 / 303</strong>
+                        <span>后端测试基线（当前本地仓库快照）</span>
+                    </div>
+                    <div class="metric">
+                        <strong>211 / 211</strong>
+                        <span>前端测试基线（当前本地仓库快照）</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2>核心价值</h2>
+                <ul class="list">
+                    <li>把费用申请、报销审批、凭证生成、归档留痕串成同一条业务链路，减少人工反复搬运数据。</li>
+                    <li>把流程模板、表单模板、凭证映射等规则前置为可维护配置，降低后续扩展成本。</li>
+                    <li>通过首页工作台、最近常用模块、待办统计等设计，让财务人员更快进入高频操作。</li>
+                    <li>引入 Agent 工作台，为“查询、通知、定时触发、工具编排、人机交互”预留统一落地点。</li>
+                    <li>在架构治理上同步推进测试与边界整理，保证功能扩展时系统仍可持续演进。</li>
+                </ul>
+            </section>
+        </div>
+
+        <section class="panel" style="margin-top: 24px;">
+            <h2>系统能力拆解</h2>
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <h3><i class="fas fa-file-signature"></i>报销与费控工作台</h3>
+                    <p>支持新建报销、审批处理、OCR识别、发票验真、报销单查询、待办提醒，并通过首页工作台聚合当前最重要的处理事项。</p>
+                </article>
+                <article class="feature-card">
+                    <h3><i class="fas fa-sitemap"></i>流程与表单设计</h3>
+                    <p>内置流程管理、流程设计器、表单设计器，方便把不同费用场景抽象成可复用、可配置的审批流程。</p>
+                </article>
+                <article class="feature-card">
+                    <h3><i class="fas fa-receipt"></i>凭证生成与总账衔接</h3>
+                    <p>支持模板级贷方策略、费用类型借方映射、待推送单据池与推送结果查询，把报销结果向总账凭证落地。</p>
+                </article>
+                <article class="feature-card">
+                    <h3><i class="fas fa-folder-open"></i>电子档案与留痕</h3>
+                    <p>围绕单据、财务账簿、附件、票据和相关资料做电子化归档，为后续检索、审计与复盘提供完整链路。</p>
+                </article>
+                <article class="feature-card">
+                    <h3><i class="fas fa-robot"></i>Agent 自动化工作台</h3>
+                    <p>把 Prompt、模型、工具绑定、触发器、工作流节点编排纳入统一页面，形成财务场景下的自动化实验台，同时预留了本地化部署接口。</p>
+                </article>
+                <article class="feature-card">
+                    <h3><i class="fas fa-shield-alt"></i>权限、通知与下载中心</h3>
+                    <p>通过权限路由、通知角标、下载中心等基础能力增强系统可用性，保证不同角色进入各自的正确入口。</p>
+                </article>
+            </div>
+        </section>
+
+                        <section class="panel gallery-panel" style="margin-top: 24px;">
+            <div class="gallery-intro">
+                <div>
+                    <h2>项目截图</h2>
+                    <p>
+                        这组截图按“首页总览 - 业务录入 - 流程设计 - 凭证联动 - Agent 能力 - 系统配置”组织，点击任意卡片可放大查看。
+                    </p>
+                </div>
+                <div class="gallery-count"><i class="fas fa-images"></i> 6 Screens</div>
+            </div>
+
+            <div class="snapshot-grid">
+                <article class="snapshot-card">
+                    <button class="snapshot-trigger" type="button" data-title="首页工作台" data-route="/dashboard" data-image="images/agent-finance/dashboard-overview.png">
+                        <div class="snapshot-media">
+                            <img src="images/agent-finance/dashboard-overview.png" alt="首页工作台截图" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.parentElement.parentElement.disabled = true;">
+                            <div class="snapshot-fallback">
+                                <i class="fas fa-image"></i>
+                                <span>截图待补充</span>
+                            </div>
+                            <div class="snapshot-sheen"></div>
+                            <div class="snapshot-topline">
+                                <span class="snapshot-badge">Overview</span>
+                                <span class="snapshot-zoom"><i class="fas fa-expand"></i>点击放大</span>
+                            </div>
+                            <div class="snapshot-bottomline">
+                                <div>
+                                    <div class="snapshot-index">01 / Dashboard</div>
+                                    <div class="snapshot-label">首页工作台</div>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <div class="snapshot-body">
+                        <h3>首页工作台</h3>
+                        <span class="snapshot-route"><i class="fas fa-location-arrow"></i>/dashboard</span>
+                    </div>
+                </article>
+
+                <article class="snapshot-card">
+                    <button class="snapshot-trigger" type="button" data-title="报销单创建与 OCR 录入" data-route="/expense/create?templateCode=FX202604190001" data-image="images/agent-finance/expense-create.png">
+                        <div class="snapshot-media">
+                            <img src="images/agent-finance/expense-create.png" alt="报销单创建截图" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.parentElement.parentElement.disabled = true;">
+                            <div class="snapshot-fallback">
+                                <i class="fas fa-image"></i>
+                                <span>截图待补充</span>
+                            </div>
+                            <div class="snapshot-sheen"></div>
+                            <div class="snapshot-topline">
+                                <span class="snapshot-badge">Expense Entry</span>
+                                <span class="snapshot-zoom"><i class="fas fa-expand"></i>点击放大</span>
+                            </div>
+                            <div class="snapshot-bottomline">
+                                <div>
+                                    <div class="snapshot-index">02 / OCR + Form</div>
+                                    <div class="snapshot-label">报销单创建与 OCR 录入</div>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <div class="snapshot-body">
+                        <h3>报销单创建与 OCR 录入</h3>
+                        <span class="snapshot-route"><i class="fas fa-location-arrow"></i>/expense/create?templateCode=FX202604190001</span>
+                    </div>
+                </article>
+
+                <article class="snapshot-card">
+                    <button class="snapshot-trigger" type="button" data-title="流程设计器" data-route="/expense/workbench/process-management/flow-designer/1" data-image="images/agent-finance/process-designer.png">
+                        <div class="snapshot-media">
+                            <img src="images/agent-finance/process-designer.png" alt="流程设计器截图" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.parentElement.parentElement.disabled = true;">
+                            <div class="snapshot-fallback">
+                                <i class="fas fa-image"></i>
+                                <span>截图待补充</span>
+                            </div>
+                            <div class="snapshot-sheen"></div>
+                            <div class="snapshot-topline">
+                                <span class="snapshot-badge">Process Designer</span>
+                                <span class="snapshot-zoom"><i class="fas fa-expand"></i>点击放大</span>
+                            </div>
+                            <div class="snapshot-bottomline">
+                                <div>
+                                    <div class="snapshot-index">03 / Workflow</div>
+                                    <div class="snapshot-label">流程设计器</div>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <div class="snapshot-body">
+                        <h3>流程设计器</h3>
+                        <span class="snapshot-route"><i class="fas fa-location-arrow"></i>/expense/workbench/process-management/flow-designer/1</span>
+                    </div>
+                </article>
+
+                <article class="snapshot-card">
+                    <button class="snapshot-trigger" type="button" data-title="凭证生成与推送结果" data-route="/finance/general-ledger/new-voucher" data-image="images/agent-finance/voucher-generation.png">
+                        <div class="snapshot-media">
+                            <img src="images/agent-finance/voucher-generation.png" alt="凭证生成截图" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.parentElement.parentElement.disabled = true;">
+                            <div class="snapshot-fallback">
+                                <i class="fas fa-image"></i>
+                                <span>截图待补充</span>
+                            </div>
+                            <div class="snapshot-sheen"></div>
+                            <div class="snapshot-topline">
+                                <span class="snapshot-badge">Voucher Sync</span>
+                                <span class="snapshot-zoom"><i class="fas fa-expand"></i>点击放大</span>
+                            </div>
+                            <div class="snapshot-bottomline">
+                                <div>
+                                    <div class="snapshot-index">04 / Accounting</div>
+                                    <div class="snapshot-label">凭证生成与推送结果</div>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <div class="snapshot-body">
+                        <h3>凭证生成与推送结果</h3>
+                        <span class="snapshot-route"><i class="fas fa-location-arrow"></i>/finance/general-ledger/new-voucher</span>
+                    </div>
+                </article>
+
+                <article class="snapshot-card">
+                    <button class="snapshot-trigger" type="button" data-title="Agent 工作台" data-route="/archives/agents" data-image="images/agent-finance/archive-agent.png">
+                        <div class="snapshot-media">
+                            <img src="images/agent-finance/archive-agent.png" alt="Agent工作台截图" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.parentElement.parentElement.disabled = true;">
+                            <div class="snapshot-fallback">
+                                <i class="fas fa-image"></i>
+                                <span>截图待补充</span>
+                            </div>
+                            <div class="snapshot-sheen"></div>
+                            <div class="snapshot-topline">
+                                <span class="snapshot-badge">Agent Workspace</span>
+                                <span class="snapshot-zoom"><i class="fas fa-expand"></i>点击放大</span>
+                            </div>
+                            <div class="snapshot-bottomline">
+                                <div>
+                                    <div class="snapshot-index">05 / Automation</div>
+                                    <div class="snapshot-label">Agent 工作台</div>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <div class="snapshot-body">
+                        <h3>Agent 工作台</h3>
+                        <span class="snapshot-route"><i class="fas fa-location-arrow"></i>/archives/agents</span>
+                    </div>
+                </article>
+
+                <article class="snapshot-card">
+                    <button class="snapshot-trigger" type="button" data-title="系统设置中心" data-route="/settings?tab=apiInterfaces" data-image="images/agent-finance/layout-navigation.png">
+                        <div class="snapshot-media">
+                            <img src="images/agent-finance/layout-navigation.png" alt="系统设置中心截图" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.parentElement.parentElement.disabled = true;">
+                            <div class="snapshot-fallback">
+                                <i class="fas fa-image"></i>
+                                <span>截图待补充</span>
+                            </div>
+                            <div class="snapshot-sheen"></div>
+                            <div class="snapshot-topline">
+                                <span class="snapshot-badge">System Setup</span>
+                                <span class="snapshot-zoom"><i class="fas fa-expand"></i>点击放大</span>
+                            </div>
+                            <div class="snapshot-bottomline">
+                                <div>
+                                    <div class="snapshot-index">06 / Settings</div>
+                                    <div class="snapshot-label">系统设置中心</div>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <div class="snapshot-body">
+                        <h3>系统设置中心</h3>
+                        <span class="snapshot-route"><i class="fas fa-location-arrow"></i>/settings?tab=apiInterfaces</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </div>
+
+    <div class="lightbox" id="lightbox" hidden>
+        <div class="lightbox-backdrop" data-lightbox-close></div>
+        <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
+            <div class="lightbox-toolbar">
+                <div class="lightbox-meta">
+                    <strong id="lightbox-title">项目截图</strong>
+                    <span id="lightbox-route">点击左右箭头可切换截图</span>
+                </div>
+                <div class="lightbox-actions">
+                    <button class="lightbox-btn" type="button" id="lightbox-prev" aria-label="Previous screenshot">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <button class="lightbox-btn" type="button" id="lightbox-next" aria-label="Next screenshot">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="lightbox-btn" type="button" id="lightbox-close" aria-label="Close preview">
+                        <i class="fas fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="lightbox-stage">
+                <button class="lightbox-btn lightbox-nav lightbox-nav--prev" type="button" id="lightbox-prev-stage" aria-label="Previous screenshot">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <img id="lightbox-image" src="" alt="项目截图放大预览">
+                <button class="lightbox-btn lightbox-nav lightbox-nav--next" type="button" id="lightbox-next-stage" aria-label="Next screenshot">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            const triggers = Array.from(document.querySelectorAll('.snapshot-trigger'));
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxTitle = document.getElementById('lightbox-title');
+            const lightboxRoute = document.getElementById('lightbox-route');
+            const closeButtons = [document.getElementById('lightbox-close'), lightbox.querySelector('[data-lightbox-close]')];
+            const prevButtons = [document.getElementById('lightbox-prev'), document.getElementById('lightbox-prev-stage')];
+            const nextButtons = [document.getElementById('lightbox-next'), document.getElementById('lightbox-next-stage')];
+            let activeIndex = 0;
+
+            function render(index) {
+                const item = triggers[index];
+                if (!item) return;
+                activeIndex = index;
+                lightboxImage.src = item.dataset.image || '';
+                lightboxImage.alt = item.dataset.title || 'Screenshot Preview';
+                lightboxTitle.textContent = item.dataset.title || 'Screenshot';
+                lightboxRoute.textContent = item.dataset.route || '';
+            }
+
+            function openLightbox(index) {
+                render(index);
+                lightbox.hidden = false;
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                lightbox.hidden = true;
+                document.body.style.overflow = '';
+                lightboxImage.src = '';
+            }
+
+            function showPrev() {
+                render((activeIndex - 1 + triggers.length) % triggers.length);
+            }
+
+            function showNext() {
+                render((activeIndex + 1) % triggers.length);
+            }
+
+            triggers.forEach((trigger, index) => {
+                trigger.addEventListener('click', function () {
+                    if (trigger.disabled) return;
+                    openLightbox(index);
+                });
+            });
+
+            closeButtons.forEach((button) => button.addEventListener('click', closeLightbox));
+            prevButtons.forEach((button) => button.addEventListener('click', showPrev));
+            nextButtons.forEach((button) => button.addEventListener('click', showNext));
+
+            document.addEventListener('keydown', function (event) {
+                if (lightbox.hidden) return;
+                if (event.key === 'Escape') closeLightbox();
+                if (event.key === 'ArrowLeft') showPrev();
+                if (event.key === 'ArrowRight') showNext();
+            });
+        })();
+    </script>
+</body>
+</html>

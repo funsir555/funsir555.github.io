@@ -108,6 +108,53 @@
             transform: translateY(-5px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
+
+        .project-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .project-card-link .card {
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .project-card-link .card::after {
+            content: '\f061';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+            color: var(--secondary);
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateX(-6px);
+        }
+
+        .project-card-link:hover .card::after,
+        .project-card-link:focus-visible .card::after {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .project-card-link:focus-visible {
+            outline: 3px solid rgba(52, 152, 219, 0.35);
+            outline-offset: 6px;
+            border-radius: 12px;
+        }
+
+        .project-card-cta {
+            margin-top: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
         
         .card h3 {
             color: var(--dark);
@@ -236,6 +283,15 @@
         <section>
             <h2><i class="fas fa-project-diagram"></i>项目经验</h2>
             <div class="card-grid">
+
+                <a class="project-card-link" href="agent-finance-system.html">
+                    <div class="card">
+                        <h3>Agent智能财务系统</h3>
+                        <p>个人基于Codex独立开发的智能财务系统，集成费控、报销、记账、电子档案、财务Agent，<span class="highlight">打通财务信息链路，提高办公效率</span>。</p>
+                        <span class="project-card-cta">点击查看项目详情 <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
                 <div class="card">
                     <h3>无纸化财务体系</h3>
                     <p>主导搭建了部门的<span class="highlight">无纸化报销流程</span>与<span class="highlight">无纸化档案室</span>，实现财务档案全电子化管理，提升了工作效率并减少了物理存储成本。</p>
@@ -251,10 +307,6 @@
                     <p>通过深入业务一线调研，建立集团费用预算体系，应用重要性分析原则，剔除与更换非必要费用成本，最终<span class="highlight">节省30%费用成本</span>。</p>
                 </div>
                 
-                <div class="card">
-                    <h3>报表一体化分析体系</h3>
-                    <p>通过SQL整合分析58家账套数据，对增值税所得税差异、往来账龄分析等实现批量化预警，<span class="highlight">提升账务准确性</span>与<span class="highlight">工作效率50%</span>。</p>
-                </div>
             </div>
         </section>
         
@@ -266,11 +318,14 @@
                 <span class="skill-badge"><i class="fas fa-file-excel" style="margin-right: 5px;"></i> VBA</span>
                 <span class="skill-badge"><i class="fas fa-robot" style="margin-right: 5px;"></i> RPA</span>
                 <span class="skill-badge"><i class="fab fa-python" style="margin-right: 5px;"></i> Python</span>
+                <span class="skill-badge"><i class="fab fa-python" style="margin-right: 5px;"></i> PowerBI</span>
+                <span class="skill-badge"><i class="fab fa-python" style="margin-right: 5px;"></i> Agent</span>
+                <span class="skill-badge"><i class="fab fa-python" style="margin-right: 5px;"></i> codex</span>
             </div>
         </section>
         
         <section>
-            <h2><i class="fas fa-tools"></i>开发的工具/脚本</h2>
+            <h2><i class="fas fa-tools"></i>开发的工具/脚本（AI时代下脚本工具的生成已经变得唾手可得）</h2>
             <div class="script-grid">
                 <div class="script-card">
                   <a href="银行余额一键核对.html" class="card-link">
@@ -323,6 +378,7 @@
     </div>
 </body>
 </html>
+
 
 
 
